@@ -1,6 +1,6 @@
 export const Hero = () => {
 	return (
-		<div className='max-h-[500px] relative'>
+		<div className='max-h-[500px] relative mb-12'>
 			{/* Gradient */}
 			<div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-black/10 to-black/30'></div>
 
