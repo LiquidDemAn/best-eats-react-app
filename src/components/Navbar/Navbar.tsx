@@ -1,12 +1,20 @@
+import { useState } from 'react';
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { BsFillCartFill } from 'react-icons/bs';
+import { MobileMenu } from '../MobileMenu';
 
 export const Navbar = () => {
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const menuHandle = () => {
+		setIsMenuOpen(!isMenuOpen);
+	};
+
 	return (
 		<div className='max-w-7xl gap-5 mx-auto flex justify-between items-center p-4'>
 			{/* Left side */}
 			<div className='flex items-center gap-3'>
-				<div className='cursor-pointer'>
+				<div onClick={menuHandle} className='cursor-pointer'>
 					<AiOutlineMenu size={30} />
 				</div>
 
@@ -35,6 +43,9 @@ export const Navbar = () => {
 				<BsFillCartFill size={20} />
 				<p className=''>Cart</p>
 			</button>
+
+			{/* Mobile Menu */}
+			<MobileMenu menuHandle={menuHandle} isMenuOpen={isMenuOpen} />
 		</div>
 	);
 };
