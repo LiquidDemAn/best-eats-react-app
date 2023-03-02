@@ -11,7 +11,7 @@ export const Navbar = () => {
 	};
 
 	return (
-		<div className='max-w-7xl gap-5 mx-auto flex justify-between items-center p-4'>
+		<div className='gap-5 mb-5 flex justify-between items-center p-4'>
 			{/* Left side */}
 			<div className='flex items-center gap-3'>
 				<div onClick={menuHandle} className='cursor-pointer'>
