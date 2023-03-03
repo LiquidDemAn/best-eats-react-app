@@ -23,7 +23,7 @@ const cards = [
 
 export const HeadlineCards = () => {
 	return (
-		<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3'>
+		<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12'>
 			{cards.map(({ id, img, title, subtitle }) => (
 				<div key={id} className='relative rounded-xl'>
 					<div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-black/10 to-black/60 rounded-xl'></div>
