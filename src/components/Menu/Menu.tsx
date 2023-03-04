@@ -81,9 +81,7 @@ export const Menu = () => {
 
 	return (
 		<div className='mb-12'>
-			<h1 className='text-center font-bold text-4xl text-orange-600 mb-4'>
-				Top Rated Menu Items
-			</h1>
+			<h1 className='component-header'>Top Rated Menu Items</h1>
 
 			{/* Filter Row */}
 			<div className='flex flex-col gap-4 justify-between lg:flex-row mb-6'>
