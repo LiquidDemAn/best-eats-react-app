@@ -34,7 +34,7 @@ export const Navbar = () => {
 			</div>
 
 			{/* Cart */}
-			<button className='flex items-center gap-2 justify-center bg-black text-white rounded-full py-2'>
+			<button className='btn-hover flex items-center gap-2 justify-center bg-black text-white rounded-full py-2'>
 				<BsFillCartFill size={20} />
 				<p className=''>Cart</p>
 			</button>

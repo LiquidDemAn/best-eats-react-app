@@ -89,6 +89,7 @@ export const Menu = () => {
 				<Filter
 					title='Filter Type'
 					filter={types}
+					active={category}
 					handleFilter={handleCategory}
 				/>
 
@@ -96,6 +97,7 @@ export const Menu = () => {
 				<Filter
 					title='Filter Price'
 					filter={prices}
+					active={price}
 					handleFilter={handlePrice}
 				/>
 			</div>

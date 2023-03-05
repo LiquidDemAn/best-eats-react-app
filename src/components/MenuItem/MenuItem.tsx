@@ -2,11 +2,10 @@ import { MenuItemType } from '../../typedef';
 
 type Props = {
 	item: MenuItemType;
-
 };
 
 export const MenuItem = ({ item }: Props) => {
-	const { name, category, price, image } = item;
+	const { name, price, image } = item;
 
 	return (
 		<div className='border w-full shadow-lg hover:scale-105 transition rounded-lg cursor-pointer'>

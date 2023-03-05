@@ -33,7 +33,7 @@ export const HeadlineCards = () => {
 						<h2 className='font-bold text-2xl'>{title}</h2>
 						<span>{subtitle}</span>
 
-						<button className='absolute bottom-4 w-40 bg-white border-transparent text-black font-semibold text-lg py-2'>
+						<button className='btn-hover absolute bottom-4 w-40 bg-white border-transparent text-black font-semibold text-lg py-2'>
 							Order Now
 						</button>
 					</div>
