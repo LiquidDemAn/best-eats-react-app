@@ -1,8 +1,8 @@
-import { Category } from './components/Category';
 import { HeadlineCards } from './components/HeadlineCards';
 import { Hero } from './components/Hero';
 import { Menu } from './components/Menu';
 import { Header } from './components/Header';
+import { Categories } from './components/Categories';
 
 function App() {
 	return (
@@ -11,7 +11,7 @@ function App() {
 			<Hero />
 			<HeadlineCards />
 			<Menu />
-			<Category />
+			<Categories />
 		</div>
 	);
 }

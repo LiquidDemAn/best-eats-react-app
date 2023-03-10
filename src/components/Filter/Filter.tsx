@@ -1,9 +1,4 @@
-import React from 'react';
-
-export type FilterType = {
-	id: number;
-	item: string;
-};
+import { FilterType } from '../../typedef';
 
 type Props = {
 	title: string;
