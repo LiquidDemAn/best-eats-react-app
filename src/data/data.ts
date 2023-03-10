@@ -180,4 +180,23 @@ export const categories = [
 	},
 ];
 
-
+export const headlineCards = [
+	{
+		id: 1,
+		img: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600',
+		title: `Sun's Out, BOGO's Out`,
+		subtitle: 'Through 8/26',
+	},
+	{
+		id: 2,
+		img: 'https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600',
+		title: `New Restaurants`,
+		subtitle: 'Added Daily',
+	},
+	{
+		id: 3,
+		img: 'https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&w=600',
+		title: `We Deliver Desserts Too`,
+		subtitle: 'Through 8/26',
+	},
+];

@@ -3,10 +3,31 @@ import { menu } from '../../data/data';
 import { Filter } from '../Filter';
 import { MenuItem } from '../MenuItem';
 
-export const Menu = () => {
+export const FoodMenu = () => {
 	const [foods, setFoods] = useState(menu);
 	const [category, setCategory] = useState('all');
 	const [price, setPrice] = useState('all');
+
+	const { categories, prices } = useMemo(() => {
+		const result = menu.reduce<{ categories: string[]; prices: string[] }>(
+			(acc, { category, price }) => {
+				if (!acc.categories.includes(category)) {
+					acc.categories.push(category);
+				}
+
+				if (!acc.prices.includes(price)) {
+					acc.prices.push(price);
+				}
+
+				return acc;
+			},
+			{ categories: ['all'], prices: [] }
+		);
+
+		result.prices.sort((a, b) => a.length - b.length).unshift('all');
+
+		return result;
+	}, []);
 
 	const handleCategory = (category: string) => {
 		setCategory(category);
@@ -43,52 +64,16 @@ export const Menu = () => {
 		}
 	}, [price, category]);
 
-	const { types, prices } = useMemo(() => {
-		const typesArr = menu.reduce<string[]>((acc, { category }) => {
-			if (!acc.includes(category)) {
-				acc.push(category);
-			}
-
-			return acc;
-		}, []);
-
-		const pricesArr = menu.reduce<string[]>((acc, { price }) => {
-			if (!acc.includes(price)) {
-				acc.push(price);
-			}
-
-			return acc;
-		}, []);
-
-		const types = [
-			{ id: 0, item: 'all' },
-			...typesArr.map((item, index) => {
-				return { id: index + 1, item };
-			}),
-		];
-
-		const prices = [
-			{ id: 0, item: 'all' },
-			...pricesArr
-				.sort((a, b) => a.length - b.length)
-				.map((item, index) => {
-					return { id: index + 1, item };
-				}),
-		];
-
-		return { types, prices };
-	}, []);
-
 	return (
 		<div className='mb-12'>
 			<h1 className='component-header'>Top Rated Menu Items</h1>
 
 			{/* Filter Row */}
 			<div className='flex flex-col gap-4 justify-between lg:flex-row mb-6'>
-				{/* Filter Type */}
+				{/* Filter Category */}
 				<Filter
-					title='Filter Type'
-					filter={types}
+					title='Filter Categories'
+					filter={categories}
 					active={category}
 					handleFilter={handleCategory}
 				/>

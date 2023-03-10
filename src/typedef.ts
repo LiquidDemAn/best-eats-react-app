@@ -8,9 +8,4 @@ export type MenuItemType = {
 	price: string;
 };
 
-export type FilterType = {
-	id: number;
-	item: string;
-};
-
 export type CategoryType = typeof categories[0];

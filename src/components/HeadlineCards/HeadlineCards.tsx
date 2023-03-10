@@ -1,30 +1,9 @@
-import React from 'react';
-
-const cards = [
-	{
-		id: 1,
-		img: 'https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?auto=compress&cs=tinysrgb&w=600',
-		title: `Sun's Out, BOGO's Out`,
-		subtitle: 'Through 8/26',
-	},
-	{
-		id: 2,
-		img: 'https://images.pexels.com/photos/718742/pexels-photo-718742.jpeg?auto=compress&cs=tinysrgb&w=600',
-		title: `New Restaurants`,
-		subtitle: 'Added Daily',
-	},
-	{
-		id: 3,
-		img: 'https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&w=600',
-		title: `We Deliver Desserts Too`,
-		subtitle: 'Through 8/26',
-	},
-];
+import { headlineCards } from '../../data/data';
 
 export const HeadlineCards = () => {
 	return (
 		<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12'>
-			{cards.map(({ id, img, title, subtitle }) => (
+			{headlineCards.map(({ id, img, title, subtitle }) => (
 				<div key={id} className='relative rounded-xl'>
 					<div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-black/10 to-black/60 rounded-xl'></div>
 
