@@ -4,7 +4,7 @@ type Props = {
 	item: MenuItemType;
 };
 
-export const MenuItem = ({ item }: Props) => {
+export const FoodItem = ({ item }: Props) => {
 	const { name, price, image } = item;
 
 	return (

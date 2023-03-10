@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { menu } from '../../data/data';
 import { Filter } from '../Filter';
-import { MenuItem } from '../MenuItem';
+import { FoodItem } from '../FoodItem';
 
 export const FoodMenu = () => {
 	const [foods, setFoods] = useState(menu);
@@ -90,7 +90,7 @@ export const FoodMenu = () => {
 			{/* Display Menu */}
 			<div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-6'>
 				{foods.map((item) => (
-					<MenuItem key={item.id} item={item} />
+					<FoodItem key={item.id} item={item} />
 				))}
 			</div>
 		</div>
