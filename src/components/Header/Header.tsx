@@ -3,7 +3,7 @@ import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { BsFillCartFill } from 'react-icons/bs';
 import { MobileMenu } from '../MobileMenu';
 
-export const Navbar = () => {
+export const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const menuHandle = () => {
@@ -18,7 +18,7 @@ export const Navbar = () => {
 					<AiOutlineMenu size={30} />
 				</div>
 
-				<h1 className='hidden sm:block text-2xl sm:text-3xl lg:text-4xl'>
+				<h1 className='hidden text-2xl sm:block  sm:text-3xl lg:text-4xl'>
 					Best <span className='font-bold'>Eats</span>
 				</h1>
 			</div>
