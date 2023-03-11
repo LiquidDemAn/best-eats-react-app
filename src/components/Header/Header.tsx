@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { BsFillCartFill } from 'react-icons/bs';
+import { AppContext } from '../../context';
 import { MobileMenu } from '../MobileMenu';
 
 export const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+	const { orders } = useContext(AppContext);
+
+	const ordersCount = useMemo(() => {
+		orders.reduce((acc, cur) => acc + cur.count, 0);
+	}, [orders]);
 
 	const menuHandle = () => {
 		setIsMenuOpen(!isMenuOpen);
@@ -37,6 +44,7 @@ export const Header = () => {
 			<button className='btn-hover flex items-center gap-2 justify-center bg-black text-white rounded-full py-2'>
 				<BsFillCartFill size={20} />
 				<p className=''>Cart</p>
+				<p>({ordersCount})</p>
 			</button>
 
 			{/* Mobile Menu */}

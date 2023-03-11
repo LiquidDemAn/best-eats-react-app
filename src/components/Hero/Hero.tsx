@@ -32,7 +32,6 @@ export const Hero = () => {
 	const handleNext = () => {
 		setCurrentIndex((prev) => (prev + 1 === slides.length ? 0 : prev + 1));
 	};
-	console.log(currentIndex);
 
 	const handlePrev = () => {
 		setCurrentIndex((prev) => (prev === 0 ? slides.length - 1 : prev - 1));

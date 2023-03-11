@@ -9,3 +9,4 @@ export type MenuItemType = {
 };
 
 export type CategoryType = typeof categories[0];
+export type CartItemType = CategoryType & { count: number };
