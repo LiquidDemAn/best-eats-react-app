@@ -51,13 +51,11 @@ export const MobileMenu = ({ menuHandle, isMenuOpen }: Props) => {
 	return (
 		<>
 			{/* Overlay */}
-			{isMenuOpen && (
-				<div className='fixed w-full h-screen z-20 top-0 left-0 bg-black/80'></div>
-			)}
+			{isMenuOpen && <div onClick={menuHandle} className='overlay'></div>}
 
 			{/* Menu */}
 			<div
-				className={`fixed w-[300px] h-screen z-30 top-0 left-0 bg-white duration-500 ${
+				className={`fixed w-[320px] h-screen z-30 top-0 left-0 bg-white duration-500 ${
 					isMenuOpen ? 'left-0' : 'left-[-100%]'
 				}`}
 			>
@@ -77,7 +75,7 @@ export const MobileMenu = ({ menuHandle, isMenuOpen }: Props) => {
 								key={id}
 								className='px-4 py-2 flex items-center gap-4 text-xl cursor-pointer transition-all hover:bg-gray-300 duration-300'
 							>
-								{icon}  
+								{icon}
 								{text}
 							</li>
 						))}

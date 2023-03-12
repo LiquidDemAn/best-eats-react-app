@@ -42,17 +42,15 @@ function App() {
 		});
 	};
 
-	const value = { orders, addToCart };
+	const value = { orders, addToCart, removeFromCart };
 
 	return (
 		<AppContext.Provider value={value}>
-			<div className='max-w-[1640px] mx-auto px-4'>
-				<Header />
-				<Hero />
-				<HeadlineCards />
-				<FoodMenu />
-				<Categories />
-			</div>
+			<Header />
+			<Hero />
+			<HeadlineCards />
+			<FoodMenu />
+			<Categories />
 		</AppContext.Provider>
 	);
 }
