@@ -5,12 +5,12 @@ import { Header } from './components/Header';
 import { Categories } from './components/Categories';
 import { AppContext } from './context';
 import { useState } from 'react';
-import { CartItemType, CategoryType } from './typedef';
+import { CartItemType, MenuItemType } from './typedef';
 
 function App() {
 	const [orders, setOrders] = useState<CartItemType[]>([]);
 
-	const addToCart = (order: CategoryType) => {
+	const addToCart = (order: MenuItemType) => {
 		setOrders((prev) => {
 			const addedOrder = prev.find((item) => item.id === order.id);
 
@@ -26,7 +26,7 @@ function App() {
 
 	const removeFromCart = (id: number) => {
 		setOrders((prev) => {
-			prev.filter((item) => {
+			return prev.filter((item) => {
 				if (item.id === id && item.count === 1) {
 					return false;
 				}
@@ -37,12 +37,14 @@ function App() {
 
 				return true;
 			});
-
-			return prev;
 		});
 	};
 
-	const value = { orders, addToCart, removeFromCart };
+	const removeAllFromCart = (id: number) => {
+		setOrders((prev) => prev.filter((item) => item.id !== id));
+	};
+
+	const value = { orders, addToCart, removeFromCart, removeAllFromCart };
 
 	return (
 		<AppContext.Provider value={value}>

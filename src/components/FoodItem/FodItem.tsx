@@ -1,9 +1,9 @@
-import { CategoryType, MenuItemType } from '../../typedef';
+import { MenuItemType } from '../../typedef';
 import { AiOutlinePlus } from 'react-icons/ai';
 
 type Props = {
 	item: MenuItemType;
-	addToCart: (order: CategoryType) => void;
+	addToCart: (order: MenuItemType) => void;
 };
 
 export const FoodItem = ({ item, addToCart }: Props) => {

@@ -60,7 +60,7 @@ export const Header = () => {
 			<MobileMenu menuHandle={menuHandle} isMenuOpen={isMenuOpen} />
 
 			{/* Cart */}
-			<Cart isCartOpen={isCartOpen} cartHandle={cartHandle} />
+			<Cart orders={orders} isCartOpen={isCartOpen} cartHandle={cartHandle} />
 		</div>
 	);
 };
