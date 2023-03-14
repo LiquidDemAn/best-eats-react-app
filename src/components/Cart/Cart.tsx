@@ -2,6 +2,7 @@ import { AiOutlineClose } from 'react-icons/ai';
 import { CartItemType } from '../../typedef';
 import { CartItem } from '../CartItem';
 import { GiShoppingCart } from 'react-icons/gi';
+import { useMemo } from 'react';
 
 type Props = {
 	orders: CartItemType[];
@@ -10,6 +11,24 @@ type Props = {
 };
 
 export const Cart = ({ orders, isCartOpen, cartHandle }: Props) => {
+	const orderPrices = useMemo(() => {
+		const pricesCount = orders.reduce<{ [key: string]: number }>(
+			(acc, { price, count }) => {
+				if (!acc[price]) {
+					acc[price] = count;
+				} else {
+					console.log(1);
+					acc[price] = acc[price] + count;
+				}
+				return acc;
+			},
+			{}
+		);
+
+		return Object.entries(pricesCount);
+	}, [orders]);
+
+	console.log(orderPrices);
 	return (
 		<>
 			{/* Overlay */}
@@ -32,6 +51,17 @@ export const Cart = ({ orders, isCartOpen, cartHandle }: Props) => {
 							{orders.map((order) => (
 								<CartItem key={order.id} item={order} />
 							))}
+						</div>
+						<div className='flex justify-between gap-1'>
+							<span>Prices:</span>
+							<ul className='flex gap-4 justify-between'>
+								{orderPrices.map((item) => (
+									<li key={item[0]}>
+										<span className='price'>{item[0]}</span>=
+										<span>{item[1]}</span>
+									</li>
+								))}
+							</ul>
 						</div>
 						<button className='btn-orange btn-orange__hover transition'>
 							Order
