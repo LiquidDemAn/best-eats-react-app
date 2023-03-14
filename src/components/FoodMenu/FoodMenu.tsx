@@ -1,15 +1,15 @@
-import { useMemo, useState, useEffect, useContext } from 'react';
+import { useMemo, useState, useEffect, useContext, memo } from 'react';
 import { AppContext } from '../../context';
 import { menu } from '../../data/data';
 import { Filter } from '../Filter';
 import { FoodItem } from '../FoodItem';
 
-export const FoodMenu = () => {
+export const FoodMenu = memo(() => {
 	const [foods, setFoods] = useState(menu);
 	const [category, setCategory] = useState('all');
 	const [price, setPrice] = useState('all');
 
-	const {addToCart} = useContext(AppContext);
+	const { addToCart } = useContext(AppContext);
 
 	const { categories, prices } = useMemo(() => {
 		const result = menu.reduce<{ categories: string[]; prices: string[] }>(
@@ -98,4 +98,4 @@ export const FoodMenu = () => {
 			</div>
 		</div>
 	);
-};
+});

@@ -1,7 +1,8 @@
+import { memo } from 'react';
 import { categories } from '../../data/data';
 import { Category } from '../Category';
 
-export const Categories = () => {
+export const Categories = memo(() => {
 	return (
 		<div>
 			<h2 className='component-header'>Top Rated Menu Items</h2>
@@ -13,4 +14,4 @@ export const Categories = () => {
 			</div>
 		</div>
 	);
-};
+});

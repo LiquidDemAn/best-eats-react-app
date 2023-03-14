@@ -4,13 +4,13 @@ import { FoodMenu } from './components/FoodMenu';
 import { Header } from './components/Header';
 import { Categories } from './components/Categories';
 import { AppContext } from './context';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { CartItemType, MenuItemType } from './typedef';
 
 function App() {
 	const [orders, setOrders] = useState<CartItemType[]>([]);
 
-	const addToCart = (order: MenuItemType) => {
+	const addToCart = useCallback((order: MenuItemType) => {
 		setOrders((prev) => {
 			const addedOrder = prev.find((item) => item.id === order.id);
 
@@ -21,7 +21,8 @@ function App() {
 				return [...prev, { ...order, count: 1 }];
 			}
 		});
-	};
+	}, []);
+	
 	console.log(orders);
 
 	const removeFromCart = (id: number) => {

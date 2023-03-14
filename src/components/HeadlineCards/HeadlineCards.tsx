@@ -1,6 +1,7 @@
+import { memo } from 'react';
 import { headlineCards } from '../../data/data';
 
-export const HeadlineCards = () => {
+export const HeadlineCards = memo(() => {
 	return (
 		<div className='grid gap-6 sm:grid-cols-2 lg:grid-cols-3 mb-12'>
 			{headlineCards.map(({ id, img, title, subtitle }) => (
@@ -26,4 +27,4 @@ export const HeadlineCards = () => {
 			))}
 		</div>
 	);
-};
+});

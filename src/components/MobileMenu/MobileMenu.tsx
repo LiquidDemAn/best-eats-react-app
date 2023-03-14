@@ -36,7 +36,7 @@ const list = [
 		icon: <BsFillSaveFill size={25} />,
 	},
 	{
-		id: 5,
+		id: 7,
 		text: 'Invite Friends',
 		icon: <FaUserFriends size={25} />,
 	},

@@ -1,6 +1,6 @@
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
 import { RxDotFilled } from 'react-icons/rx';
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
 const slides = [
 	{
@@ -26,7 +26,7 @@ const slides = [
 	},
 ];
 
-export const Hero = () => {
+export const Hero = memo(() => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	const handleNext = () => {
@@ -96,4 +96,4 @@ export const Hero = () => {
 			<div className='absolute top-0 left-0 h-full w-full bg-gradient-to-b from-black/10 to-black/30'></div>
 		</div>
 	);
-};
+});
