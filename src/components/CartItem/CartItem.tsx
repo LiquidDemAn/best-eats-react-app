@@ -25,9 +25,9 @@ export const CartItem = ({ item }: Props) => {
 	};
 
 	return (
-		<div className='flex gap-3 bg-gray-300 p-2 rounded-2xl'>
+		<div className='flex gap-6 items-center bg-gray-300 p-2 rounded-2xl'>
 			<img
-				className='w-24 h-24 rounded-lg object-cover'
+				className='w-28 h-28 rounded-lg object-cover'
 				src={item.image}
 				alt={item.name}
 			/>
@@ -35,7 +35,7 @@ export const CartItem = ({ item }: Props) => {
 				{/* Item Info */}
 				<div className='flex flex-col gap-2'>
 					<h5 className='font-semibold'>{item.name}</h5>
-					<p>{item.price}</p>
+					<span className='price'>{item.price}</span>
 					{/* Add/Count/Remove */}
 					<div className='flex gap-2'>
 						<button

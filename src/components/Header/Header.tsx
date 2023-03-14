@@ -7,7 +7,7 @@ import { MobileMenu } from '../MobileMenu';
 
 export const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
-	const [isCartOpen, setIsCartOpen] = useState(true);
+	const [isCartOpen, setIsCartOpen] = useState(false);
 
 	const { orders } = useContext(AppContext);
 

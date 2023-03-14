@@ -45,7 +45,7 @@ export const FoodItem = ({ item, addToCart }: Props) => {
 			<div className='flex items-center justify-between px-2 py-4 gap-1'>
 				<p className='font-bold'>{name}</p>
 				<p>
-					<span className='bg-orange-500 text-white font-semibold p-1 rounded-full'>
+					<span className='price'>
 						{price}
 					</span>
 				</p>
