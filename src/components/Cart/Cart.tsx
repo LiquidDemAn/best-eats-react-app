@@ -33,7 +33,9 @@ export const Cart = ({ orders, isCartOpen, cartHandle }: Props) => {
 								<CartItem key={order.id} item={order} />
 							))}
 						</div>
-						<button>Create</button>
+						<button className='btn-orange btn-orange__hover transition'>
+							Order
+						</button>
 					</>
 				) : (
 					<div className='flex flex-grow justify-center flex-col items-center'>

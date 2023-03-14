@@ -13,8 +13,8 @@ export const Filter = ({ title, filter, handleFilter, active }: Props) => {
 				{filter.map((item) => (
 					<button
 						onClick={() => handleFilter(item)}
-						className={`filter-btn ${
-							active === item ? 'bg-orange-600 text-white' : 'btn-hover'
+						className={`btn-orange ${
+							active === item ? 'bg-orange-600 text-white' : 'btn-orange__hover transition'
 						} `}
 						key={item}
 					>
