@@ -4,30 +4,37 @@ import { FoodMenu } from './components/FoodMenu';
 import { Header } from './components/Header';
 import { Categories } from './components/Categories';
 import { AppContext } from './context';
-import { useCallback, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { CartItemType, MenuItemType } from './typedef';
+import { getOrdersFromStorage, setOrdersInStorage } from './storage';
 
 function App() {
-	const [orders, setOrders] = useState<CartItemType[]>([]);
+	const storedOrders = useMemo(() => {
+		return getOrdersFromStorage();
+	}, []);
 
-	const addToCart = useCallback((order: MenuItemType) => {
+	const [orders, setOrders] = useState<CartItemType[]>(storedOrders);
+
+	const addToCart = (order: MenuItemType) => {
 		setOrders((prev) => {
 			const addedOrder = prev.find((item) => item.id === order.id);
 
 			if (addedOrder) {
 				addedOrder.count++;
+				setOrdersInStorage(prev);
 				return [...prev];
 			} else {
-				return [...prev, { ...order, count: 1 }];
+				const newOrder = { ...order, count: 1 };
+
+				setOrdersInStorage([...prev, newOrder]);
+				return [...prev, newOrder];
 			}
 		});
-	}, []);
-	
-	console.log(orders);
+	};
 
 	const removeFromCart = (id: number) => {
 		setOrders((prev) => {
-			return prev.filter((item) => {
+			const result = prev.filter((item) => {
 				if (item.id === id && item.count === 1) {
 					return false;
 				}
@@ -38,11 +45,18 @@ function App() {
 
 				return true;
 			});
+
+			setOrdersInStorage(result);
+			return result;
 		});
 	};
 
 	const removeAllFromCart = (id: number) => {
-		setOrders((prev) => prev.filter((item) => item.id !== id));
+		setOrders((prev) => {
+			const result = prev.filter((item) => item.id !== id);
+			setOrdersInStorage(result);
+			return result;
+		});
 	};
 
 	const value = { orders, addToCart, removeFromCart, removeAllFromCart };

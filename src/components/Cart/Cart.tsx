@@ -12,23 +12,18 @@ type Props = {
 
 export const Cart = ({ orders, isCartOpen, cartHandle }: Props) => {
 	const orderPrices = useMemo(() => {
-		const pricesCount = orders.reduce<{ [key: string]: number }>(
-			(acc, { price, count }) => {
+		return Object.entries(
+			orders.reduce<{ [key: string]: number }>((acc, { price, count }) => {
 				if (!acc[price]) {
 					acc[price] = count;
 				} else {
-					console.log(1);
 					acc[price] = acc[price] + count;
 				}
 				return acc;
-			},
-			{}
+			}, {})
 		);
-
-		return Object.entries(pricesCount);
 	}, [orders]);
 
-	console.log(orderPrices);
 	return (
 		<>
 			{/* Overlay */}
