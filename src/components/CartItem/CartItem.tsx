@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { CartItemType } from '../../typedef';
+import { useContext } from 'react';
+import { CartItemType, MenuItemType } from '../../typedef';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
 import { AppContext } from '../../context';
 
 type Props = {
-	item: CartItemType;
+	item: MenuItemType;
 };
 
 export const CartItem = ({ item }: Props) => {
@@ -25,7 +25,7 @@ export const CartItem = ({ item }: Props) => {
 	};
 
 	return (
-		<div className='flex gap-6 items-center bg-gray-300 p-2 rounded-2xl'>
+		<div className='flex gap-6 w-[320px] items-center bg-gray-300 p-2 rounded-2xl'>
 			<img
 				className='w-28 h-28 rounded-lg object-cover'
 				src={item.image}
@@ -44,17 +44,21 @@ export const CartItem = ({ item }: Props) => {
 						>
 							<AiOutlinePlus />
 						</button>
-						<p>{item.count}</p>
+						<p>{item.count ? item.count : 0}</p>
 						<button
 							onClick={removeFromCartHandler}
-							className='p-1 rounded-xl bg-orange-500 border-transparent'
+							className={`p-1 rounded-xl  border-transparent ${
+								item.count ? 'bg-orange-500' : 'bg-orange-500/30'
+							}`}
 						>
 							<AiOutlineMinus />
 						</button>
 
 						<button
 							onClick={removeAllFromCartHandler}
-							className='ml-6 p-1 rounded-xl bg-red-500 border-transparent'
+							className={`ml-6 p-1 rounded-xl  border-transparent ${
+								item.count ? 'bg-red-500' : 'bg-red-500/30'
+							}`}
 						>
 							<BsTrash />
 						</button>

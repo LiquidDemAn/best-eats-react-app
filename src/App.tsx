@@ -13,13 +13,12 @@ function App() {
 		return getOrdersFromStorage();
 	}, []);
 
-	const [orders, setOrders] = useState<CartItemType[]>(storedOrders);
+	const [orders, setOrders] = useState<MenuItemType[]>(storedOrders);
 
 	const addToCart = (order: MenuItemType) => {
 		setOrders((prev) => {
 			const addedOrder = prev.find((item) => item.id === order.id);
-
-			if (addedOrder) {
+			if (addedOrder?.count) {
 				addedOrder.count++;
 				setOrdersInStorage(prev);
 				return [...prev];
@@ -39,7 +38,7 @@ function App() {
 					return false;
 				}
 
-				if (item.id === id && item.count > 1) {
+				if (item.id === id && item.count && item.count > 1) {
 					item.count--;
 				}
 

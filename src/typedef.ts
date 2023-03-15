@@ -6,7 +6,8 @@ export type MenuItemType = {
 	category: string;
 	image: string;
 	price: string;
+	count?: number;
 };
 
 export type CategoryType = typeof categories[0];
-export type CartItemType = MenuItemType & { count: number };
+export type CartItemType = MenuItemType & { count?: number };

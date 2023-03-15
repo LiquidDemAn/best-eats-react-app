@@ -28,7 +28,7 @@ export const FoodItem = ({ item, addToCart }: Props) => {
 	return (
 		<div
 			onClick={addToCardHandler}
-			className='relative border w-full shadow-lg hover:scale-105 rounded-lg cursor-pointer group transition'
+			className='relative border shadow-lg hover:scale-105 rounded-lg cursor-pointer group transition'
 		>
 			<div
 				style={{ backgroundImage: `url(${image})` }}
@@ -45,9 +45,7 @@ export const FoodItem = ({ item, addToCart }: Props) => {
 			<div className='flex items-center justify-between px-2 py-4 gap-1'>
 				<p className='font-bold'>{name}</p>
 				<p>
-					<span className='price'>
-						{price}
-					</span>
+					<span className='price'>{price}</span>
 				</p>
 			</div>
 		</div>

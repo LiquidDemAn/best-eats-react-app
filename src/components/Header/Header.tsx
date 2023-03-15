@@ -1,18 +1,35 @@
-import { useContext, useMemo, useState } from 'react';
+import { ChangeEvent, useContext, useMemo, useState } from 'react';
 import { AiOutlineMenu, AiOutlineSearch } from 'react-icons/ai';
 import { BsFillCartFill } from 'react-icons/bs';
 import { AppContext } from '../../context';
+import { menu } from '../../data/data';
+import { MenuItemType } from '../../typedef';
 import { Cart } from '../Cart';
+import { CartItem } from '../CartItem';
+import { FoodItem } from '../FoodItem';
 import { MobileMenu } from '../MobileMenu';
 
 export const Header = () => {
+	const { orders, addToCart } = useContext(AppContext);
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isCartOpen, setIsCartOpen] = useState(false);
 
-	const { orders } = useContext(AppContext);
+	const [filteredOrders, setFilteredOrders] = useState<MenuItemType[]>([]);
+
+	const handlerSearch = (event: ChangeEvent<HTMLInputElement>) => {
+		const value = event.target.value;
+
+		if (value.length >= 3) {
+			setFilteredOrders(
+				menu.filter((item) => item.name.toLowerCase().includes(value))
+			);
+		} else {
+			setFilteredOrders([]);
+		}
+	};
 
 	const ordersCount = useMemo(() => {
-		return orders.reduce((acc, cur) => acc + cur.count, 0);
+		return orders.reduce((acc, { count }) => (count ? acc + count : acc), 0);
 	}, [orders]);
 
 	const cartHandle = () => {
@@ -31,19 +48,34 @@ export const Header = () => {
 					<AiOutlineMenu size={30} />
 				</div>
 
-				<h1 className='hidden text-2xl sm:block  sm:text-3xl lg:text-4xl'>
+				<h1 className='hidden md:block md:text-xl lg:text-2xl'>
 					Best <span className='font-bold'>Eats</span>
 				</h1>
 			</div>
 
 			{/* Search */}
-			<div className='flex items-center gap-2 bg-gray-200 rounded-full p-2  lg:w-[500px]'>
-				<AiOutlineSearch size={20} />
-				<input
-					type='text'
-					placeholder='Search foods'
-					className='bg-transparent p-1 focus:outline-none rounded-full w-full'
-				/>
+			<div className='relative hidden sm:block w-[500px]'>
+				<div className='flex items-center gap-2 bg-gray-200 rounded-full p-2 '>
+					<AiOutlineSearch size={20} />
+					<input
+						type='text'
+						onChange={handlerSearch}
+						placeholder='Search foods'
+						className='bg-transparent p-1 focus:outline-none rounded-full w-full'
+					/>
+				</div>
+				{filteredOrders.length ? (
+					<div className='flex flex-col items-center gap-2 absolute z-30 h-72 w-full p-2 bg-white overflow-y-scroll'>
+						{filteredOrders.map((item) => (
+							<CartItem
+								key={item.id}
+								item={orders.find((order) => order.id === item.id) || item}
+							/>
+						))}
+					</div>
+				) : (
+					<></>
+				)}
 			</div>
 
 			{/* Cart Btn */}

@@ -20,7 +20,7 @@ body {
 }
 
 .overlay {
-	@apply fixed w-full h-screen z-20 top-0 left-0 bg-black/80;
+	@apply fixed w-full h-screen z-30 top-0 left-0 bg-black/80;
 }
 
 .btn-orange__hover {

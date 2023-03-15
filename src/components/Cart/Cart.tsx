@@ -14,10 +14,12 @@ export const Cart = ({ orders, isCartOpen, cartHandle }: Props) => {
 	const orderPrices = useMemo(() => {
 		return Object.entries(
 			orders.reduce<{ [key: string]: number }>((acc, { price, count }) => {
-				if (!acc[price]) {
-					acc[price] = count;
-				} else {
-					acc[price] = acc[price] + count;
+				if (count) {
+					if (!acc[price]) {
+						acc[price] = count;
+					} else {
+						acc[price] = acc[price] + count;
+					}
 				}
 				return acc;
 			}, {})
