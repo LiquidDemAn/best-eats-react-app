@@ -1,6 +1,6 @@
 import { AiOutlineClose } from 'react-icons/ai';
 import { MenuItemType } from '../../typedef';
-import { CartItem } from '../CartItem';
+import { OrderItem } from '../OrderItem';
 import { GiShoppingCart } from 'react-icons/gi';
 import { useMemo } from 'react';
 
@@ -46,7 +46,7 @@ export const Cart = ({ orders, isCartOpen, cartHandle }: Props) => {
 					<>
 						<div className='flex flex-grow flex-col gap-4 overflow-auto'>
 							{orders.map((order) => (
-								<CartItem key={order.id} item={order} />
+								<OrderItem key={order.id} item={order} />
 							))}
 						</div>
 						<div className='flex justify-between gap-1'>

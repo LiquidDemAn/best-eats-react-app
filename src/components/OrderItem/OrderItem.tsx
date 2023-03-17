@@ -8,7 +8,7 @@ type Props = {
 	item: MenuItemType;
 };
 
-export const CartItem = ({ item }: Props) => {
+export const OrderItem = ({ item }: Props) => {
 	const { addToCart, removeFromCart, removeAllFromCart } =
 		useContext(AppContext);
 

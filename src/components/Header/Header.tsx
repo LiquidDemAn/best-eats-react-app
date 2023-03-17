@@ -5,7 +5,7 @@ import { AppContext } from '../../context';
 import { menu } from '../../data/data';
 import { MenuItemType } from '../../typedef';
 import { Cart } from '../Cart';
-import { CartItem } from '../CartItem';
+import { OrderItem } from '../OrderItem';
 import { MobileMenu } from '../MobileMenu';
 
 export const Header = () => {
@@ -69,7 +69,7 @@ export const Header = () => {
 						{foundOrders.length ? (
 							<>
 								{foundOrders.map((item) => (
-									<CartItem
+									<OrderItem
 										key={item.id}
 										item={orders.find((order) => order.id === item.id) || item}
 									/>
