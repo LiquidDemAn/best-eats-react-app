@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { CartItemType, MenuItemType } from '../../typedef';
+import { MenuItemType } from '../../typedef';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { BsTrash } from 'react-icons/bs';
 import { AppContext } from '../../context';

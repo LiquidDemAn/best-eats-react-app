@@ -1,4 +1,4 @@
-import { CartItemType, MenuItemType } from './typedef';
+import { MenuItemType } from './typedef';
 
 export const getOrdersFromStorage = (): MenuItemType[] => {
 	const orders = localStorage.getItem('orders');

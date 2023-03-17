@@ -1,11 +1,11 @@
 import { AiOutlineClose } from 'react-icons/ai';
-import { CartItemType } from '../../typedef';
+import { MenuItemType } from '../../typedef';
 import { CartItem } from '../CartItem';
 import { GiShoppingCart } from 'react-icons/gi';
 import { useMemo } from 'react';
 
 type Props = {
-	orders: CartItemType[];
+	orders: MenuItemType[];
 	isCartOpen: boolean;
 	cartHandle: () => void;
 };

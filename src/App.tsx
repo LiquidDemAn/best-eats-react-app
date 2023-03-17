@@ -5,7 +5,7 @@ import { Header } from './components/Header';
 import { Categories } from './components/Categories';
 import { AppContext } from './context';
 import { useMemo, useState } from 'react';
-import { CartItemType, MenuItemType } from './typedef';
+import { MenuItemType } from './typedef';
 import { getOrdersFromStorage, setOrdersInStorage } from './storage';
 
 function App() {
