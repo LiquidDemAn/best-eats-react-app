@@ -6,31 +6,30 @@ import { menu } from '../../data/data';
 import { MenuItemType } from '../../typedef';
 import { Cart } from '../Cart';
 import { CartItem } from '../CartItem';
-import { FoodItem } from '../FoodItem';
 import { MobileMenu } from '../MobileMenu';
 
 export const Header = () => {
-	const { orders, addToCart } = useContext(AppContext);
+	const { orders } = useContext(AppContext);
+
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isCartOpen, setIsCartOpen] = useState(false);
-
-	const [filteredOrders, setFilteredOrders] = useState<MenuItemType[]>([]);
-
-	const handlerSearch = (event: ChangeEvent<HTMLInputElement>) => {
-		const value = event.target.value;
-
-		if (value.length >= 3) {
-			setFilteredOrders(
-				menu.filter((item) => item.name.toLowerCase().includes(value))
-			);
-		} else {
-			setFilteredOrders([]);
-		}
-	};
+	const [foundOrders, setFoundOrders] = useState<MenuItemType[] | null>(null);
 
 	const ordersCount = useMemo(() => {
 		return orders.reduce((acc, { count }) => (count ? acc + count : acc), 0);
 	}, [orders]);
+
+	const searchHandle = (event: ChangeEvent<HTMLInputElement>) => {
+		const value = event.target.value;
+
+		if (value) {
+			setFoundOrders(
+				menu.filter((item) => item.name.toLowerCase().includes(value))
+			);
+		} else {
+			setFoundOrders(null);
+		}
+	};
 
 	const cartHandle = () => {
 		setIsCartOpen(!isCartOpen);
@@ -41,7 +40,7 @@ export const Header = () => {
 	};
 
 	return (
-		<div className='gap-5 mb-5 flex justify-between items-center p-2 sm:p-4'>
+		<div className='flex justify-between items-center gap-5 mb-5 p-2 sm:p-4'>
 			{/* Left side */}
 			<div className='flex items-center gap-3'>
 				<div onClick={menuHandle} className='cursor-pointer'>
@@ -54,24 +53,31 @@ export const Header = () => {
 			</div>
 
 			{/* Search */}
-			<div className='relative hidden sm:block w-[500px]'>
-				<div className='flex items-center gap-2 bg-gray-200 rounded-full p-2 '>
+			<div className='relative hidden sm:block w-96'>
+				<div className='flex items-center gap-2 p-2 bg-gray-200 rounded-full'>
 					<AiOutlineSearch size={20} />
 					<input
 						type='text'
-						onChange={handlerSearch}
+						onChange={searchHandle}
 						placeholder='Search foods'
-						className='bg-transparent p-1 focus:outline-none rounded-full w-full'
+						className='p-1 bg-transparent focus:outline-none'
 					/>
 				</div>
-				{filteredOrders.length ? (
-					<div className='flex flex-col items-center gap-2 absolute z-30 h-72 w-full p-2 bg-white overflow-y-scroll'>
-						{filteredOrders.map((item) => (
-							<CartItem
-								key={item.id}
-								item={orders.find((order) => order.id === item.id) || item}
-							/>
-						))}
+
+				{foundOrders ? (
+					<div className='max-h-72 w-full absolute z-30 flex flex-col items-center gap-2 p-2 bg-white overflow-y-scroll'>
+						{foundOrders.length ? (
+							<>
+								{foundOrders.map((item) => (
+									<CartItem
+										key={item.id}
+										item={orders.find((order) => order.id === item.id) || item}
+									/>
+								))}
+							</>
+						) : (
+							<>No products found</>
+						)}
 					</div>
 				) : (
 					<></>
@@ -81,7 +87,7 @@ export const Header = () => {
 			{/* Cart Btn */}
 			<button
 				onClick={cartHandle}
-				className='btn-hover flex items-center gap-2 justify-center bg-black text-white rounded-full py-2'
+				className='flex items-center justify-center gap-2 py-2 bg-black text-white rounded-full btn-hover'
 			>
 				<BsFillCartFill size={20} />
 				<p>Cart</p>
