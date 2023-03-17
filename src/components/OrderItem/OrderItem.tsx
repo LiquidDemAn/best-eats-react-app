@@ -25,7 +25,7 @@ export const OrderItem = ({ item }: Props) => {
 	};
 
 	return (
-		<div className='flex gap-6 w-[320px] items-center bg-gray-300 p-2 rounded-2xl'>
+		<div className='w-full flex items-center gap-6 p-2 bg-gray-300 rounded-2xl'>
 			<img
 				className='w-28 h-28 rounded-lg object-cover'
 				src={item.image}

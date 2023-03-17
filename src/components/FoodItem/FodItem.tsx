@@ -1,15 +1,16 @@
 import { MenuItemType } from '../../typedef';
 import { AiOutlinePlus } from 'react-icons/ai';
 import { IoCheckmark } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../context';
 
 type Props = {
 	item: MenuItemType;
-	addToCart: (order: MenuItemType) => void;
 };
 
-export const FoodItem = ({ item, addToCart }: Props) => {
+export const FoodItem = ({ item }: Props) => {
 	const { name, price, image } = item;
+	const { addToCart } = useContext(AppContext);
 	const [clicked, setClicked] = useState(false);
 
 	const addToCardHandler = () => {

@@ -18,6 +18,7 @@ function App() {
 	const addToCart = (order: MenuItemType) => {
 		setOrders((prev) => {
 			const addedOrder = prev.find((item) => item.id === order.id);
+			
 			if (addedOrder?.count) {
 				addedOrder.count++;
 				setOrdersInStorage(prev);
