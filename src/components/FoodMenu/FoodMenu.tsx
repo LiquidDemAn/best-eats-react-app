@@ -66,7 +66,7 @@ export const FoodMenu = memo(() => {
 
 	return (
 		<div className='mb-12'>
-			<h1 className='component-header'>Top Rated Menu Items</h1>
+			<h1 className='component-header'>Top Rated Menu</h1>
 
 			{/* Filter Row */}
 			<div className='flex flex-col gap-4 justify-between lg:flex-row mb-6'>
